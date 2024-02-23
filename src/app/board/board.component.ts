@@ -112,9 +112,11 @@ export class BoardComponent implements OnInit {
       if (this.checkWinner('X')) {
         this.gameWinner = 'X';
         this.gameComplete = true;
+        return;
       } else if (this.checkWinner('O')) {
         this.gameWinner = 'O';
         this.gameComplete = true;
+        return;
       }
     }
      this.gameComplete = this.boardSquares.every(x => x.isFlipped === 'true');
