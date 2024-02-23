@@ -1,0 +1,30 @@
+<section class="w-[48rem] h-[38rem] rounded shadow-xl bg-isabelline">
+  <div class="mt-16 grid grid-cols-1 gap-4 content-center" >
+    <div class="w-max">
+      <div class="mt-1 grid grid-cols-1 gap-4 content-center">
+        <div class="w-full ">
+          <h2 class="text-center text-[42px]">{{ currentPlayer }}'s Turn</h2>
+        </div>
+        <div class="grid gap-x-8 gap-y-4 grid-cols-3 mt-1">
+          @for (square of boardSquares; track square.id) {
+          <div class="box-wrapper">
+            <div class="w-24 h-24 shadow-2xl  box-cover" (click)="!gameComplete ? squareFlipped(square) : ''" [@.disabled]="gameComplete" [@flipState]="square.isFlipped">
+              <div class="w-full h-full rounded-md  box box-front bg-tomato ">
+              </div>
+              <div class="w-full h-full rounded-md  box box-back bg-skyblue">
+                {{ square.player }}
+              </div>
+            </div>
+          </div>
+          }
+
+        </div>
+        <div>
+          <h2 class="text-center text-[42px]" *ngIf="gameWinner">{{ gameWinner }} Won</h2>
+          <button *ngIf="gameComplete" (click)="startGame()" class="middle h-10 w-24 bg-blackolive text-isabelline rounded-md shadow-2xl ">Reset Game</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
